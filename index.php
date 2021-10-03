@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +9,9 @@
 
     <!-- =====BOX ICONS===== -->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-<script src="https://kit.fontawesome.com/2647a8e79d.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2647a8e79d.js" crossorigin="anonymous"></script>
     <title>My mind is a mess</title>
+    <link rel="icon" href="./assets/img/35-edit-outline.gif" type="image/jpg">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <?php
     require_once './core/init.php';
     require_once './components/navbar.php';
-     ?>
+    ?>
     <main class="l-main">
         <!--===== HOME =====-->
         <section class="home bd-grid" id="home">
@@ -51,7 +51,7 @@
 
                 <div>
                     <h2 class="about__subtitle">Sunt Sevastre Beatrice</h2>
-                    <p class="about__text"> Sunt elevă în clasa a XI-a, iar mediul în care trăiesc reprezintă o inspirație pentru poeziile mele de 5 ani. Am și o pasiune pentru motociclete având și conducând unul de la 16 ani. 
+                    <p class="about__text"> Sunt elevă în clasa a XI-a, iar mediul în care trăiesc reprezintă o inspirație pentru poeziile mele de 5 ani. Am și o pasiune pentru motociclete având și conducând unul de la 16 ani.
                     </p>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <div>
                     <h2 class="skills__subtitle">Skiluri profesionale</h2>
                     <!--<p class="skills__text">-->
-                        
+
                     <!--</p>-->
                     <div class="skills__data">
                         <div class="skills__names">
@@ -93,7 +93,7 @@
                     </div>
                     <div class="skills__data">
                         <div class="skills__names">
-                            <i class="fas fa-video skills__icon"></i> 
+                            <i class="fas fa-video skills__icon"></i>
                             <span class="skills__name">Editare video</span>
                         </div>
                         <div class="skills__bar skills__js">
@@ -105,7 +105,7 @@
                     </div>
                     <div class="skills__data">
                         <div class="skills__names">
-                            <i class="fas fa-users skills__icon"></i> 
+                            <i class="fas fa-users skills__icon"></i>
                             <span class="skills__name">Team work</span>
                         </div>
                         <div class="skills__bar skills__ux">
@@ -118,7 +118,7 @@
                 </div>
 
                 <div style="display:flex; justify-content:center;">
-                    <img src="assets/img/work3.jpeg" alt="" class="skills__img" style="max-width:86%;" >
+                    <img src="assets/img/work3.jpeg" alt="" class="skills__img" style="max-width:86%;">
                 </div>
             </div>
         </section>
@@ -135,7 +135,7 @@
                 $posts = $posts->results();
                 foreach ($posts as $post) {
                     $img = json_decode($post->poze, true);
-                    if($img){
+                    if ($img) {
                         echo '
                         <a href="blog.php?titlu=' . $post->titlu . '" class="work__img">
                             <img src="' . $img[0] . '" alt="">
@@ -148,28 +148,28 @@
 
         <!--===== CONTACT =====-->
         <section class="contact section" style="background:url(./assets/img/background.svg);background-repeat: -repeat; 
-    background-size: cover;"  id="contact">
+    background-size: cover;" id="contact">
             <h2 class="section-title">Contact</h2>
 
-            <div class="contact__container bd-grid" >
+            <div class="contact__container bd-grid">
                 <form method="POST" class="contact__form" action="index.php">
-                 
+
                     <?php
-                        if(Input::exists()){
-                            $text = str_replace("\n.", "\n..",Input::get("text") );
-                            $headers = array(
-                                        'From' => Input::get("email"),
-                                        'Reply-To' => 'webmaster@example.com',
-                                        'X-Mailer' => 'PHP/' . phpversion()
-                                    );
-                                    try{
-                                        mail("dragutumatei573@yahoo.ro", "Contact blog", $text, $headers);
-                                    } catch(Exception $e){
-                                        echo $e->getMessage();
-                                    }
+                    if (Input::exists()) {
+                        $text = str_replace("\n.", "\n..", Input::get("text"));
+                        $headers = array(
+                            'From' => Input::get("email"),
+                            'Reply-To' => 'webmaster@example.com',
+                            'X-Mailer' => 'PHP/' . phpversion()
+                        );
+                        try {
+                            mail("dragutumatei573@yahoo.ro", "Contact blog", $text, $headers);
+                        } catch (Exception $e) {
+                            echo $e->getMessage();
                         }
-                    ?>  
-                 
+                    }
+                    ?>
+
                     <input type="text" name="name" placeholder="Name" class="contact__input">
                     <input type="mail" name="email" placeholder="Email" class="contact__input">
                     <textarea name="text" cols="0" rows="10" placeholder="Scrie un mesaj" class="contact__input"></textarea>

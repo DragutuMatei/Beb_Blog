@@ -110,12 +110,12 @@
         ?>
     
         <div class="mb-3">
-            <label for="tit" class="form-label">Scrie titlul poeziei fara semne sau emoticoane</label>
+            <label for="tit" class="form-label">Scrie titlul poeziei fara semnul intrebarii sau emoticoane</label>
 
             <input type="text" id="tit" class="form-control" name="titlu" placeholder="Titlu" />
         </div>
         <div class="mb-3">
-            <label for="text" class="form-label">Scrie poezia fara semne sau emoticoane. Nu uita ca la sf fiecarui rand sa adaugi &lt;br&gt; </label>
+            <label for="text" class="form-label">Scrie poezia fara emoticoane. Nu uita ca la sf fiecarui rand sa adaugi &lt;br&gt; </label>
 
             <textarea rows="10" cols="25" class="form-control" type="text" id="text" name="text" placeholder="Text"></textarea>
         </div>
