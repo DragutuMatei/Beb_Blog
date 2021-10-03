@@ -1,76 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+require_once './core/init.php';
+?>
+<?php
+
+// require_once './components/navbar.php';
+$db = DB::getInstance();
+$postare = $db->get("posts", array("titlu", "=", $_GET['titlu']));
+$postare = $postare->first();
+?>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
+    <title><?php echo $postare->titlu; ?></title>
 
     <style>
-        .comments .al{
+        .comments .al {
             display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
         }
-        
-        .comments .al .coment{
-            background:#0e24318c;
+
+        .comments .al .coment {
+            background: #0e24318c;
             width: 90vw;
-    margin: 10px 50px;
-    box-shadow: inset 2px 7px 17px 2px rgb(255 255 255 / 50%);
-    border-radius: 20px;
-    padding: 10px;
-        } 
-        
-        .comments .al .coment h3{
-                font-weight: 900;
-    color: #f440be;
-    text-transform: capitalize;
-        margin: 0 10px;
+            margin: 10px 50px;
+            box-shadow: inset 2px 7px 17px 2px rgb(255 255 255 / 50%);
+            border-radius: 20px;
+            padding: 10px;
         }
-        
-        .comments .al .coment p{
+
+        .comments .al .coment h3 {
+            font-weight: 900;
+            color: #f440be;
+            text-transform: capitalize;
+            margin: 0 10px;
+        }
+
+        .comments .al .coment p {
             text-indent: 20px;
         }
-    
-        .comments form{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            width:100vw;
-            height:80px;
-            margin-top:40px;
-            
+
+        .comments form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 80px;
+            margin-top: 40px;
+
         }
-        
-        
-        .comments form input[type=text]{
-            width:100%;
-            max-width:430px;
-            padding:10px 12px;
-            outline:none;
-            border:none;
-            border-radius:10px 0 0 10px;
-            font-size:18px;
+
+
+        .comments form input[type=text] {
+            width: 100%;
+            max-width: 430px;
+            padding: 10px 12px;
+            outline: none;
+            border: none;
+            border-radius: 10px 0 0 10px;
+            font-size: 18px;
         }
-        
-        .comments form input[type=submit]{
-            font-size:18px;
-            padding:10px 12px;
-            background:#f440be;
-            color:white;
-            border:none;
-            outline:none;
-            border-radius:0 10px 10px 0;
-            cursor:pointer;
-            
+
+        .comments form input[type=submit] {
+            font-size: 18px;
+            padding: 10px 12px;
+            background: #f440be;
+            color: white;
+            border: none;
+            outline: none;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+
         }
-    
+
         img,
         svg,
         image {
@@ -265,18 +274,10 @@
 </head>
 
 <body>
-<?php
-    require_once './core/init.php';
-    require_once './components/navbar.php';
-     ?>
     <?php
-
-    // require_once './components/navbar.php';
-    $db = DB::getInstance();
-    $postare = $db->get("posts", array("titlu", "=", $_GET['titlu']));
-    $postare = $postare->first();
+    require_once './components/navbar.php';
     ?>
-    
+
     <main class="l-main bl" style="background: url(./assets/img/diamond-sunset.svg);
     background-repeat: no-repeat;
     
@@ -293,23 +294,23 @@
                 <?php
                 $poze = json_decode($postare->poze, true);
                 $cate_sunt = count($poze);
-                $i=1;
+                $i = 1;
                 foreach ($poze as $poza) {
                     echo '                        <li>
                             <div class="cd-svg-wrapper">
                                 <svg viewBox="0 0 1400 800">
                                     <defs>
-                                        <clipPath id="cd-image-'.$i.'">
-                                            <path id="cd-changing-path-'.$i.'" d="M1400,800H0c0,0,1-213,1-423S1,0,1,0h1398c0.6,0,1,0.4,1,1V800z" />
+                                        <clipPath id="cd-image-' . $i . '">
+                                            <path id="cd-changing-path-' . $i . '" d="M1400,800H0c0,0,1-213,1-423S1,0,1,0h1398c0.6,0,1,0.4,1,1V800z" />
                                         </clipPath>
                                     </defs>
-                                    <image height="800px" width="1400px" clip-path="url(#cd-image-'.$i.')" xlink:href="' . $poza . '"></image>
+                                    <image height="800px" width="1400px" clip-path="url(#cd-image-' . $i . ')" xlink:href="' . $poza . '"></image>
                                 </svg>
                             </div>  
                         </li>
                         ';
                     $i++;
-                    }
+                }
                 ?>
 
                 <script>
@@ -330,53 +331,52 @@
             }
             ?>
         </div>
-        <div class="poezie" >
+        <div class="poezie">
             <h1 style="margin: 5px;padding: 25px; text-align:center;"><?php echo $postare->titlu; ?> </h1>
-            
+
             <h2 style="font-size:20px; text-align:center;">
-            <?php
-            $user = new User();
-            $blog= new AddBlogPost();
-            $nr =$blog->getLikes($postare->id);
-            if($user->isLoggedIn()){
-                $user_id = $user->data()->id;
-                $liked = $blog->ai_dat_like($user_id, $postare->id);
-                
-                echo '
+                <?php
+                $user = new User();
+                $blog = new AddBlogPost();
+                $nr = $blog->getLikes($postare->id);
+                if ($user->isLoggedIn()) {
+                    $user_id = $user->data()->id;
+                    $liked = $blog->ai_dat_like($user_id, $postare->id);
+
+                    echo '
                     <form method="POST" action="./like.php" style="display:flex; justify-content:center; align-items:center;">
-                        <input type="hidden" value="'. $_GET['titlu'] .'" name="titlu"  />
-                        <input type="hidden" value="'. $postare->id .'" name="post_id"  />
-                        <input type="hidden" value="'. $user->data()->id .'" name="user_id"  />
+                        <input type="hidden" value="' . $_GET['titlu'] . '" name="titlu"  />
+                        <input type="hidden" value="' . $postare->id . '" name="post_id"  />
+                        <input type="hidden" value="' . $user->data()->id . '" name="user_id"  />
                         <button type="submit" title="like this poem" name="like" style="background:none; ouline:none; border:none; cursor:pointer;">
                         <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#f440be"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                         </button>';
-                        
-                        // if($nr==1){
-                        //   echo " like";
-                        // } else {
-                        //     echo " likes";
-                        // }
-                        //</form>';
-                        
-                        echo '</form>';
-                        if($liked){
-                            echo "Ai dat deja like la poezie!";
-                        }
-                    
-            } else{
+
+                    // if($nr==1){
+                    //   echo " like";
+                    // } else {
+                    //     echo " likes";
+                    // }
+                    //</form>';
+
+                    echo '</form>';
+                    if ($liked) {
+                        echo "Ai dat deja like la poezie!";
+                    }
+                } else {
                     echo "Loghează-te ca să poți da like!";
-            
-                //  if($nr==1){
-                //           echo $nr." like Logheaza-te ca sa poti da like!";
-                //         } else {
-                //             echo $nr." likes Logheaza-te ca sa poti da like!";
-                //         }
-            }
-            
-            if(isset($_GET['success']) && $_GET['success'] == "true"){
-                echo "Ai dat like!";
-            }
-            ?>
+
+                    //  if($nr==1){
+                    //           echo $nr." like Logheaza-te ca sa poti da like!";
+                    //         } else {
+                    //             echo $nr." likes Logheaza-te ca sa poti da like!";
+                    //         }
+                }
+
+                if (isset($_GET['success']) && $_GET['success'] == "true") {
+                    echo "Ai dat like!";
+                }
+                ?>
             </h2>
             <p style="    padding: 30px;
     text-indent: 20px;
@@ -385,65 +385,63 @@
                 echo $postare->text;
                 ?>
             </p>
-            
+
         </div>
         <div class="comments">
-    <form method="POST">
-      <?php
-        
-        if (Input::exists()) {
-            if (Token::check(Input::get("token"))) {
+            <form method="POST">
+                <?php
 
-               $blog = new AddBlogPost();
+                if (Input::exists()) {
+                    if (Token::check(Input::get("token"))) {
 
-              try{
-                $blog->coment(array(
-                  "post_id"=>Input::get("id"),
-                  "coment"=>Input::get("text"),
-                  "username"=>Input::get("username")
-                ));
+                        $blog = new AddBlogPost();
 
-               }catch(Exception $e){
-                 die($e->getMessage());
-               }
+                        try {
+                            $blog->coment(array(
+                                "post_id" => Input::get("id"),
+                                "coment" => Input::get("text"),
+                                "username" => Input::get("username")
+                            ));
+                        } catch (Exception $e) {
+                            die($e->getMessage());
+                        }
+                    }
+                }
 
-            }
-        }
-     
-        if($user->isLoggedIn()){
-            echo '
+                if ($user->isLoggedIn()) {
+                    echo '
                 <input type="text" name="text" placeholder="Scrie un comentariu">
-                <input type="hidden" name="username" value="'. $user->data()->username  .'" />
-                <input type="hidden" name="id" value="'. $postare->id .'" />
-                <input type="hidden" name="token" value="'.  Token::generate().'"/>
+                <input type="hidden" name="username" value="' . $user->data()->username  . '" />
+                <input type="hidden" name="id" value="' . $postare->id . '" />
+                <input type="hidden" name="token" value="' .  Token::generate() . '"/>
                 <input type="submit" value="Adauga">
 ';
-        }else{
-            echo "Loghează-te ca să lași un comentariu!";
-        }
-     
-      ?>
-      
-     
-    </form>
-    <div class="al">
-    <?php
-        $blog = new AddBlogPost();
-        $rez = $blog->getComments($postare->id); 
-        
-        foreach($rez as $r){
-        
-             echo '<div class="coment">
-                <h3> - '.$r->username.' - </h3>
-                <p>'.$r->coment.'</p>
+                } else {
+                    echo "Loghează-te ca să lași un comentariu!";
+                }
+
+                ?>
+
+
+            </form>
+            <div class="al">
+                <?php
+                $blog = new AddBlogPost();
+                $rez = $blog->getComments($postare->id);
+
+                foreach ($rez as $r) {
+
+                    echo '<div class="coment">
+                <h3> - ' . $r->username . ' - </h3>
+                <p>' . $r->coment . '</p>
                 </div>';
-        }
-    ?>
-    </div>
-  </div>
- <?php
-            require_once './components/footer.php';
-            ?>
+                }
+                ?>
+            </div>
+        </div>
+        <?php
+        require_once './components/footer.php';
+        ?>
         <script src="./assets/js/jquery-2.1.4.js"></script>
         <script src="./assets/js/jquery.mobile.custom.min.js"></script>
         <script src="./assets/js/snap.svg-min.js"></script>

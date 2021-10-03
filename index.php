@@ -11,7 +11,7 @@
     <!-- =====BOX ICONS===== -->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 <script src="https://kit.fontawesome.com/2647a8e79d.js" crossorigin="anonymous"></script>
-    <title>Portfolio website complete</title>
+    <title>My mind is a mess</title>
 </head>
 
 <body>

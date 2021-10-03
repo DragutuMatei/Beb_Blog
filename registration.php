@@ -9,7 +9,8 @@
     <!-- <link rel="stylesheet" href="./assets/css/registerstyle.css" /> -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/login.css">
-    <title>Sign in & Sign up Form</title>
+    <title>My mind is a mess</title>
+
 
 </head>
 
