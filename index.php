@@ -11,7 +11,7 @@
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/2647a8e79d.js" crossorigin="anonymous"></script>
     <title>My mind is a mess</title>
-    <link rel="icon" href="./assets/img/35-edit-outline.gif" type="image/jpg">
+    <link rel="icon" href="./assets/img/pencil-alt-solid.svg" type="image/jpg">
 </head>
 
 <body>
