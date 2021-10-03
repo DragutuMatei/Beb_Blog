@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/login.css">
     <title>My mind is a mess</title>
+    <link rel="icon" href="./assets/img/pencil-alt-solid.svg" type="image/jpg">
 
 
 </head>

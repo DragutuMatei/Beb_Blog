@@ -18,6 +18,7 @@ $postare = $postare->first();
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     <title><?php echo $postare->titlu; ?></title>
+    <link rel="icon" href="./assets/img/pencil-alt-solid.svg" type="image/jpg">
 
     <style>
         .comments .al {
