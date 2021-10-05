@@ -47,8 +47,6 @@ class User
         $user = $this->find($email);
         
         if ($user) {
-            echo "<br><br>".$parola."<br>".trim(hash("sha256", trim($parola).trim($this->data()->salt))) ."<br>".$this->data()->salt."<br>";
-            
             if (trim($this->data()->password) === trim(hash("sha256", trim($parola).trim($this->data()->salt))) ) {
                 Session::put($this->_sessionName, $this->data()->id);
 
